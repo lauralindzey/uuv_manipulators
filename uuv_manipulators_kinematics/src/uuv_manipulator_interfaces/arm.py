@@ -14,6 +14,7 @@
 # limitations under the License.
 from __future__ import print_function
 from past.builtins import xrange
+from future.utils import listvalues
 
 from copy import deepcopy
 import rospy
@@ -170,7 +171,7 @@ class ArmInterface(KinChainInterface):
         # End effector pose
         pose = self.forward_position_kinematics(q)
         vel = self.forward_velocity_kinematics(q, qd)
-        wrench = np.dot(self.jacobian(q), np.array(eff.values()))
+        wrench = np.dot(self.jacobian(q), np.array(listvalues(eff)))
         # Store everything in the end point state message
         self._endeffector_state.position = pose[0:3]
         self._endeffector_state.orientation = pose[3::]
