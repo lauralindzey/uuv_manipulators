@@ -13,7 +13,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+from __future__ import print_function
 import argparse
 import sys
 import rospy
@@ -59,11 +59,11 @@ if __name__ == '__main__':
 
         joint_pos = rospy.get_param(namespace + 'arms/' + arm_name + '/default_configs/' + config)
 
-        print 'Set joint configuration=', joint_pos
-        print 'Output topics:'
+        print('Set joint configuration={}'.format(joint_pos))
+        print('Output topics:')
         pub = {}
         for joint in joint_pos:
-            print '     ', joint, '=', namespace + arm_name + '/' + joint + '/position_controller/command'
+            print('     {}={}/{}/position_controller/command'.format(joint, namespace + arm_name, joint))
             pub[joint] = rospy.Publisher(namespace + arm_name + '/' + joint + '/position_controller/command', Float64, queue_size=1)
 
         start_time = time.clock()
@@ -72,7 +72,7 @@ if __name__ == '__main__':
         rospy.loginfo('Publishing command message for %s seconds' % duration)
         while time.clock() <= start_time + duration:
             if rospy.is_shutdown():
-                print 'ROS is not running'
+                print('ROS is not running')
                 break
 
             for joint in joint_pos:
@@ -84,5 +84,5 @@ if __name__ == '__main__':
         rospy.loginfo('Finishing setting joint configuration')
 
     except rospy.ROSInterruptException:
-        print 'uuv_manipulators_control::set_joint_config::Exception'
-    print 'Leaving uuv_manipulators_control::set_joint_config'
+        print('uuv_manipulators_control::set_joint_config::Exception')
+    print('Leaving uuv_manipulators_control::set_joint_config')

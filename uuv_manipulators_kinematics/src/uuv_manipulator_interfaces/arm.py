@@ -12,6 +12,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+from __future__ import print_function
 
 from copy import deepcopy
 import rospy
@@ -228,7 +229,7 @@ class ArmInterface(KinChainInterface):
 
     def add_callback(self, topic_name, function_handle):
         if topic_name not in self._subTopics:
-            print 'ArmInterface - Invalid topic name'
+            print('ArmInterface - Invalid topic name')
             return
 
         if topic_name not in self._callbacks:

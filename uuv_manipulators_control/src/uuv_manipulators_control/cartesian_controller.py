@@ -12,7 +12,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+from __future__ import print_function
 import rospy
 from uuv_manipulator_interfaces import ArmInterface
 from geometry_msgs.msg import Twist, PoseStamped, Quaternion, Vector3
@@ -139,7 +139,7 @@ class CartesianController(object):
         if self._arm_interface.inverse_kinematics(g_pos, g_quat) is not None:
             return next_goal
         else:
-            print 'Next goal could not be resolved by the inv. kinematics solver.'
+            print('Next goal could not be resolved by the inv. kinematics solver.')
             return self._last_goal
 
     def _home_button_pressed(self, msg):

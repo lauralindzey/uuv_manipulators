@@ -12,7 +12,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+from __future__ import print_function
 import rospy
 from copy import deepcopy
 import numpy as np
@@ -230,13 +230,13 @@ class KinChainInterface(object):
         for j in self._robot_description.joints:
             if j.type != 'fixed':
                 nf_joints += 1
-        print 'Base root=%s' % self._base_link
-        print 'Tip link=%s' % self._tip_link
-        print "URDF non-fixed joints: %d;" % nf_joints
-        print "URDF total joints: %d" % len(self.n_joints)
-        print "URDF links: %d" % len(self._robot_description.links)
-        print "KDL joints: %d" % self._kdl_tree.getNrOfJoints()
-        print "KDL segments: %d" % self._kdl_tree.getNrOfSegments()
+        print('Base root=%s' % self._base_link)
+        print('Tip link=%s' % self._tip_link)
+        print("URDF non-fixed joints: %d;" % nf_joints)
+        print("URDF total joints: %d" % len(self.n_joints))
+        print("URDF links: %d" % len(self._robot_description.links))
+        print("KDL joints: %d" % self._kdl_tree.getNrOfJoints())
+        print("KDL segments: %d" % self._kdl_tree.getNrOfSegments())
 
     def print_chain(self):
         print 'Number of segments in chain=%d' % self._chain.getNrOfSegments()
