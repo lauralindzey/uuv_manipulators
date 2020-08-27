@@ -239,9 +239,9 @@ class KinChainInterface(object):
         print("KDL segments: %d" % self._kdl_tree.getNrOfSegments())
 
     def print_chain(self):
-        print 'Number of segments in chain=%d' % self._chain.getNrOfSegments()
+        print('Number of segments in chain=%d' % self._chain.getNrOfSegments())
         for idx in xrange(self._chain.getNrOfSegments()):
-            print '* ' + self._chain.getSegment(idx).getName()
+            print('* ' + self._chain.getSegment(idx).getName())
 
     def get_joint_angle(self, joint):
         assert joint in self._joint_angles, 'Invalid joint name'
