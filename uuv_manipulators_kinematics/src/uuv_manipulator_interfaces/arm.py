@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 from __future__ import print_function
+from past.builtins import xrange
 
 from copy import deepcopy
 import rospy
